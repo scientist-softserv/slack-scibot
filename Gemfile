@@ -22,11 +22,9 @@ gem 'bootsnap', '>= 1.15.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
-# ODM for mongodb
-gem 'mongoid'
-
-gem 'kaminari-mongoid'
-gem 'mongoid-scroll'
+gem 'activerecord', '~> 7.0.4', require: 'active_record'
+gem 'otr-activerecord'
+gem 'pg'
 
 gem 'slack-ruby-bot-server-events'
 
