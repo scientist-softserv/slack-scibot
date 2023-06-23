@@ -66,16 +66,18 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    async (2.3.0)
+    async (2.6.2)
       console (~> 1.10)
+      fiber-annotation
       io-event (~> 1.1)
       timers (~> 4.1)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
-    concurrent-ruby (1.1.10)
-    console (1.16.2)
+    concurrent-ruby (1.2.2)
+    console (1.17.2)
+      fiber-annotation
       fiber-local
     crass (1.0.6)
     date (3.3.3)
@@ -92,14 +94,14 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-types (1.7.0)
+    dry-types (1.7.1)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0, < 2)
-      dry-inflector (~> 1.0, < 2)
-      dry-logic (>= 1.4, < 2)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
-    faraday (2.7.2)
+    faraday (2.7.7)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-mashify (0.1.1)
@@ -109,30 +111,31 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
+    fiber-annotation (0.2.0)
     fiber-local (1.0.0)
     foreman (0.87.2)
     gli (2.21.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    grape (1.7.0)
+    grape (1.7.1)
       activesupport
       builder
       dry-types (>= 1.1)
       mustermann-grape (~> 1.0.0)
-      rack (>= 1.3.0)
+      rack (>= 1.3.0, < 3)
       rack-accept
     grape-roar (0.4.1)
       grape
       multi_json
       roar (~> 1.1.0)
-    grape-swagger (1.5.0)
+    grape-swagger (1.6.1)
       grape (~> 1.3)
     hashie (5.0.0)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
-    i18n (1.12.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-event (1.1.4)
+    io-event (1.2.2)
     kaminari-core (1.2.2)
     kaminari-grape (1.0.1)
       grape
@@ -152,10 +155,10 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.3)
+    minitest (5.18.1)
     msgpack (1.6.0)
     multi_json (1.15.0)
-    multipart-post (2.2.3)
+    multipart-post (2.3.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     mustermann-grape (1.0.2)
@@ -176,14 +179,18 @@ GEM
     otr-activerecord (2.1.1)
       activerecord (>= 4.0, < 7.1)
       hashie-forbidden_attributes (~> 0.1)
+    pagy (6.0.4)
+    pagy_cursor (0.6.0)
+      activerecord (>= 5)
+      pagy (>= 6, < 7)
     pg (1.4.5)
     puma (6.0.1)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.4)
+    rack (2.2.7)
     rack-accept (0.4.5)
       rack (>= 0.4)
-    rack-cors (1.1.1)
+    rack-cors (2.0.1)
       rack (>= 2.0.0)
     rack-rewrite (1.5.1)
     rack-server-pages (0.1.0)
@@ -227,7 +234,7 @@ GEM
     roar (1.1.1)
       representable (~> 3.0)
     ruby2_keywords (0.0.5)
-    slack-ruby-bot-server (1.2.1)
+    slack-ruby-bot-server (2.1.0)
       async
       foreman
       grape
@@ -240,13 +247,12 @@ GEM
       slack-ruby-client
     slack-ruby-bot-server-events (0.3.2)
       slack-ruby-bot-server (>= 0.12.0)
-    slack-ruby-client (2.0.0)
+    slack-ruby-client (2.1.0)
       faraday (>= 2.0)
       faraday-mashify
       faraday-multipart
       gli
       hashie
-      websocket-driver
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -255,13 +261,13 @@ GEM
     timeout (0.3.1)
     timers (4.3.5)
     trailblazer-option (0.1.2)
-    tzinfo (2.0.5)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   ruby
@@ -273,6 +279,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.7)
   listen (~> 3.2)
   otr-activerecord
+  pagy_cursor
   pg
   puma (~> 6.0.1)
   rails (~> 7.0.4)

@@ -24,7 +24,8 @@
 /config/master.key
 
 # Ignore dotenv file
-.env
+.env.*
 
 # Ignore node_modules
 /node_modules
+*.~undo-tree~

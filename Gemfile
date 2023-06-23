@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.3'
 
 # Load env variables
-gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now' 
+gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.4'
 # Use Puma as the app server
@@ -27,7 +27,7 @@ gem 'otr-activerecord'
 gem 'pg'
 
 gem 'slack-ruby-bot-server-events'
-
+gem 'pagy_cursor'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
