@@ -13,6 +13,9 @@ services:
     environment:
       - VIRTUAL_PORT=3000
       - VIRTUAL_HOST=scibot.test
+    env_file:
+      - .env
+      - .env.development
     ports:
       - "3000:3000"
     command: bash -c "rails s -b 0.0.0.0"
