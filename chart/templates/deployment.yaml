@@ -50,10 +50,10 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
-          - configMapRef:
-            name: {{ include "chart.fullname" . }}-cm
-          - secretRef:
-            name: {{ include "chart.fullname" . }}-secret
+            - configMapRef:
+              name: {{ include "chart.fullname" . }}-cm
+            - secretRef:
+              name: {{ include "chart.fullname" . }}-secret
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
