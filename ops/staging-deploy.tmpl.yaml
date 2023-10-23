@@ -58,10 +58,13 @@ ingress:
         - slack-scibot.notch8.cloud
       secretName: slack-scibot-tls
 
-# database configuration for an external postgresql
+postgresql:
+  enabled: false
+
+# database configuration for an external postgresql;
+#   ignored if `postgresql.enabled` is true
 externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local
-  username: postgres
   password: $POSTGRES_PASSWORD
 
 env:
@@ -76,6 +79,6 @@ env:
     RAILS_SECRET_TOKEN: $RAILS_SECRET_TOKEN
     SLACK_CLIENT_ID: $SLACK_CLIENT_ID
     SLACK_CLIENT_SECRET: $SLACK_CLIENT_SECRET
-    SLACK_OAUTH_SCOPE: users:read,channels:read,groups:read,chat:write,commands,incoming-webhook
+    SLACK_OAUTH_SCOPE: "users:read,channels:read,groups:read,chat:write,commands,incoming-webhook"
     SLACK_SIGNING_SECRET: $SLACK_SIGNING_SECRET
   secret:

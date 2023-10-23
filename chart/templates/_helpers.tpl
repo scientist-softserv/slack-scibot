@@ -60,3 +60,52 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "chart.postgresql.fullname" -}}
+{{- printf "%s-%s" .Release.Name "postgresql" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "chart.postgresql.host" -}}
+{{- if .Values.postgresql.enabled }}
+{{- include "chart.postgresql.fullname" . }}
+{{- else }}
+{{- .Values.externalPostgresql.host }}
+{{- end }}
+{{- end -}}
+
+
+{{- define "chart.postgresql.database" -}}
+{{- if .Values.postgresql.enabled }}
+{{- .Values.postgresql.auth.database }}
+{{- else }}
+{{- .Values.externalPostgresql.database | default ( include "chart.fullname" . ) }}
+{{- end }}
+{{- end -}}
+
+{{- define "chart.postgresql.username" -}}
+{{- if .Values.postgresql.enabled }}
+{{- .Values.postgresql.auth.username }}
+{{- else }}
+{{- .Values.externalPostgresql.username | default "postgres" }}
+{{- end }}
+{{- end -}}
+
+{{- define "chart.postgresql.password" -}}
+{{- if .Values.postgresql.enabled }}
+{{- .Values.postgresql.auth.password }}
+{{- else }}
+{{- .Values.externalPostgresql.password }}
+{{- end }}
+{{- end -}}
+
+{{- define "chart.postgresql.port" -}}
+{{- if .Values.postgresql.enabled }}
+{{- .Values.postgresql.containerPorts.postgresql | default 5432 }}
+{{- else }}
+{{- .Values.externalPostgresql.port | default 5432 }}
+{{- end }}
+{{- end -}}
+
+{{- define "chart.postgresql.url" -}}
+{{- printf "postgresql://%s:%s@%s/%s?pool=5" ( include "chart.postgresql.username" . ) ( include "chart.postgresql.password" . ) ( include "chart.postgresql.host" . ) ( include "chart.postgresql.database" . ) -}}
+{{- end -}}
