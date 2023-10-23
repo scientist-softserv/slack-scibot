@@ -68,10 +68,10 @@ env:
   configmap:
     DB_HOST: pg-postgresql.staging-postgres.svc.cluster.local
     DB_NAME: slack-scibot-staging
-    DB_USER: postgres
-    SLACK_OAUTH_SCOPE: users:read,channels:read,groups:read,chat:write,commands,incoming-webhook
-  secret:
     DB_PASS: $POSTGRES_PASSWORD
+    DB_USER: postgres
     SLACK_CLIENT_ID: $SLACK_CLIENT_ID
     SLACK_CLIENT_SECRET: $SLACK_CLIENT_SECRET
+    SLACK_OAUTH_SCOPE: users:read,channels:read,groups:read,chat:write,commands,incoming-webhook
     SLACK_SIGNING_SECRET: $SLACK_SIGNING_SECRET
+  secret:
