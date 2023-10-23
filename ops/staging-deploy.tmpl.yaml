@@ -42,6 +42,11 @@ service:
   type: ClusterIP
   port: 80
 
+shared:
+  storage:
+    size: 1Gi
+    className: nfs
+
 ingress:
   enabled: true
   hosts:
