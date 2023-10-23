@@ -3,8 +3,3 @@ name: slack-scibot
 description: A Helm chart for Slack SciBot
 version: 0.1.0
 appVersion: "1.16.0"
-dependencies:
-- name: postgresql
-  version: 13.1.5
-  repository: https://charts.bitnami.com/bitnami
-  condition: postgresql.enabled

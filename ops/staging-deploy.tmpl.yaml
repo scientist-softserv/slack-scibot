@@ -58,16 +58,7 @@ ingress:
         - slack-scibot.notch8.cloud
       secretName: slack-scibot-tls
 
-postgres:
-  enabled: false
-  # auth:
-  #   postgresPassword: ""
-  #   username: ""
-  #   password: ""
-  #   database: ""
-
-# database configuration for an external postgresql;
-#   ignored if `postgresql.enabled` is true
+# database configuration for an external postgresql
 externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local
   username: postgres
