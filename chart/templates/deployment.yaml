@@ -26,10 +26,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      volumes:
-        - name: shared
-          persistentVolumeClaim:
-            claimName: {{ template "chart.name" . }}-shared
       serviceAccountName: {{ include "chart.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -56,14 +52,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          # Use sub-path for individual folders
-          volumeMounts:
-            - mountPath: /app/public/assets
-              name: shared
-              subPath: assets
-            - mountPath: /app/public/system
-              name: shared
-              subPath: system
           command: ["/bin/bash", "./ops/entrypoint.sh"]
           args: ["bundle", "exec", "puma", "-p", "3000"]
           readinessProbe:
