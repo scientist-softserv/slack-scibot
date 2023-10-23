@@ -51,7 +51,7 @@ ingress:
   annotations: {
     kubernetes.io/ingress.class: "nginx",
     nginx.ingress.kubernetes.io/proxy-body-size: "0",
-    cert-manager.io/cluster-issuer: letsencrypt-production
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   }
   tls:
     - hosts:
@@ -70,7 +70,7 @@ externalPostgresql:
 env:
   configmap:
     RAILS_HOST_NAME: slack-scibot.notch8.cloud
-    BASE_URL: https://${RAILS_HOST_NAME}
+    BASE_URL: https://slack-scibot.notch8.cloud
     DATABASE_HOST: pg-postgresql.staging-postgres.svc.cluster.local
     DATABASE_NAME: slack-scibot-staging
     DATABASE_PASSWORD: $POSTGRES_PASSWORD
