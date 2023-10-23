@@ -20,8 +20,11 @@ The default branch `master` uses Mongoid as database adapter. For ActiveRecord, 
 - `groups:read`
 - `chat:write`
 - `commands`
-- `incoming-webhook`  
-  **BASE_URL** stands for https://slackbot-hosted-domain.com hereafter.  
+- `incoming-webhook`
+
+### Still yet to do: https://api.slack.com/apps/A062693KZRB
+
+  **BASE_URL** stands for https://slackbot-hosted-domain.com hereafter.
   Use **BASE_URL** for **Redirect**.
 
 3. Activate **Interactivity & Shortcuts** and add this url: `BASE_URL/api/slack/action`
@@ -39,7 +42,7 @@ bundle install
 cp .env.example .env
 ```
 
-Go to https://api.slack.com/apps, click on your application.  
+Go to https://api.slack.com/apps, click on your application.
 Grab the infomations for `.env` from **Basic Information** section.
 
 ## Run the app

@@ -6,7 +6,9 @@ volumes:
 services:
 
   web:
-    build: .
+    build:
+      target: web
+      context: .
     volumes:
       - "./:/app/"
       - "./log:/app/log"
