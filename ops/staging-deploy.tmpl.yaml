@@ -66,10 +66,14 @@ externalPostgresql:
 
 env:
   configmap:
-    DB_HOST: pg-postgresql.staging-postgres.svc.cluster.local
-    DB_NAME: slack-scibot-staging
-    DB_PASS: $POSTGRES_PASSWORD
-    DB_USER: postgres
+    RAILS_HOST_NAME: slack-scibot.notch8.cloud
+    BASE_URL: https://${RAILS_HOST_NAME}
+    DATABASE_HOST: pg-postgresql.staging-postgres.svc.cluster.local
+    DATABASE_NAME: slack-scibot-staging
+    DATABASE_PASSWORD: $POSTGRES_PASSWORD
+    DATABASE_USER: postgres
+    RAILS_ENV: production
+    RAILS_SECRET_TOKEN: $RAILS_SECRET_TOKEN
     SLACK_CLIENT_ID: $SLACK_CLIENT_ID
     SLACK_CLIENT_SECRET: $SLACK_CLIENT_SECRET
     SLACK_OAUTH_SCOPE: users:read,channels:read,groups:read,chat:write,commands,incoming-webhook
