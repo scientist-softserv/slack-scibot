@@ -29,6 +29,23 @@ spec:
       serviceAccountName: {{ include "chart.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: db-create
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ["sh", "-c", "rails db:create"]
+          envFrom:
+            - configMapRef:
+                name: {{ include "chart.fullname" . }}-cm
+            - secretRef:
+                name: {{ include "chart.fullname" . }}-secret
+        - name: db-migrate
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ["sh", "-c", "rails db:migrate"]
+          envFrom:
+            - configMapRef:
+                name: {{ include "chart.fullname" . }}-cm
+            - secretRef:
+                name: {{ include "chart.fullname" . }}-secret
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
