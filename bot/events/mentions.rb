@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SlackRubyBotServer::Events.configure do |config|
   config.on :event, ['event_callback', 'app_mention'] do |event|
     team = Team.find_by(team_id: event[:event][:team]) || raise("Cannot find team with ID #{event[:event][:team]}.")
@@ -12,7 +14,8 @@ SlackRubyBotServer::Events.configure do |config|
     group = Group.find_by(name: group_name) if group_name
     if group
       message = group.members.map { |m| "<@#{m.member_id || m.handle}>" }.join(', ')
-      slack_client.chat_postMessage(channel: event[:event][:channel], text: "^ #{message}", thread_ts: event[:event][:ts])
+      slack_client.chat_postMessage(channel: event[:event][:channel], text: "^ #{message}",
+                                    thread_ts: event[:event][:ts])
     end
     { ok: true }
   end

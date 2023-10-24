@@ -29,3 +29,4 @@
 # Ignore node_modules
 /node_modules
 *.~undo-tree~
+*-deploy.yaml
