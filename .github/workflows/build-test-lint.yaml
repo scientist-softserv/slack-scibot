@@ -27,10 +27,10 @@ jobs:
   #   needs: build
   #   uses: scientist-softserv/actions/.github/workflows/test.yaml@v0.0.14
   #   with:
-  #     webTarget:
+  #     webTarget: web
 
-  # lint:
-  #   needs: build
-  #   uses: scientist-softserv/actions/.github/workflows/lint.yaml@v0.0.14
-  #   with:
-  #     webTarget:
+  lint:
+    needs: build
+    uses: scientist-softserv/actions/.github/workflows/lint.yaml@v0.0.14
+    with:
+      webTarget: web

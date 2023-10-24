@@ -6,9 +6,12 @@ ruby '3.1.3'
 # Load env variables
 gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.4'
+# gem 'rails', '~> 7.0.4'
+gem 'rails', '~> 7.0.7', '>= 7.0.7.1'
+
 # Use Puma as the app server
-gem 'puma', '~> 6.0.1'
+# gem 'puma', '~> 6.0.1'
+gem 'puma', '~> 6.3', '>= 6.3.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -42,3 +45,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# globalid: Upgrade Version: 1.0.1, Vulnerabilities: ReDoS based DoS vulnerability in GlobalID
+gem 'globalid', '>= 1.0.1'
+
+# nokogiri: Upgrade Version: 1.14.3, Vulnerabilities: Multiple CVEs addressed by updating packaged libxml2 to v2.10.4
+gem 'nokogiri', '>= 1.14.3'
