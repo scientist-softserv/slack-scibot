@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Group.find_or_create_by(name: 'devops') do |group|
   group.description = 'SoftServ DevOps Team'
 end

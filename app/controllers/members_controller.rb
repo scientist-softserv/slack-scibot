@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MembersController < ApplicationController
   before_action :set_member, only: %i[show update destroy]
 

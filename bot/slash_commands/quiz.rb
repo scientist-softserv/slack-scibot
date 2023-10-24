@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def quiz_message(question, channel_id)
   {
     channel: channel_id,

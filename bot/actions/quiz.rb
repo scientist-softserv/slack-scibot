@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SlackRubyBotServer::Events.configure do |config|
   config.on :action, 'block_actions' do |action|
     payload = action[:payload]

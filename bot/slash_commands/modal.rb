@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def modal_payload(trigger_id)
   {
     trigger_id:,
