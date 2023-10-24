@@ -6,11 +6,9 @@ ruby '3.1.3'
 # Load env variables
 gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-# gem 'rails', '~> 7.0.4'
 gem 'rails', '~> 7.0.7', '>= 7.0.7.1'
 
 # Use Puma as the app server
-# gem 'puma', '~> 6.0.1'
 gem 'puma', '~> 6.3', '>= 6.3.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
@@ -29,11 +27,11 @@ gem 'activerecord', '~> 7.0.4', require: 'active_record'
 gem 'otr-activerecord'
 gem 'pg'
 
-gem 'slack-ruby-bot-server-events'
 gem 'pagy_cursor'
+gem 'slack-ruby-bot-server-events'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -51,3 +49,5 @@ gem 'globalid', '>= 1.0.1'
 
 # nokogiri: Upgrade Version: 1.14.3, Vulnerabilities: Multiple CVEs addressed by updating packaged libxml2 to v2.10.4
 gem 'nokogiri', '>= 1.14.3'
+
+gem 'rubocop', require: false

@@ -12,7 +12,8 @@ SlackRubyBotServer::Events.configure do |config|
     group = Group.find_by(name: group_name) if group_name
     if group
       message = group.members.map { |m| "<@#{m.member_id || m.handle}>" }.join(', ')
-      slack_client.chat_postMessage(channel: event[:event][:channel], text: "^ #{message}", thread_ts: event[:event][:ts])
+      slack_client.chat_postMessage(channel: event[:event][:channel], text: "^ #{message}",
+                                    thread_ts: event[:event][:ts])
     end
     { ok: true }
   end
