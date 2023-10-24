@@ -8,7 +8,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+    ports:
+    - port: 80  # Service port
+      targetPort: 3000  # Container port
       protocol: TCP
       name: http
   selector:

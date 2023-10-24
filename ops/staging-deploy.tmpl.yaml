@@ -40,8 +40,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  # port: 80 # need for r2-besties
-  port: http
+  port: 80
 
 
 ingress:
