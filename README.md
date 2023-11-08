@@ -20,13 +20,16 @@ The default branch `master` uses Mongoid as database adapter. For ActiveRecord, 
 - `groups:read`
 - `chat:write`
 - `commands`
-- `incoming-webhook`  
-  **BASE_URL** stands for https://slackbot-hosted-domain.com hereafter.  
-  Use **BASE_URL** for **Redirect**.
+- `incoming-webhook`
 
-3. Activate **Interactivity & Shortcuts** and add this url: `BASE_URL/api/slack/action`
-4. Activate **Slash Commands** adding two slash commands `/ping`, `/quiz` and use this url: `BASE_URL/api/slack/command`
-5. Activate **Event Subscriptions** subscribing to the event type `member_joined_channel` and add this url: `BASE_URL/api/slack/event`(This step needs the application to be running :D so you can skip this and come back a few mins later)
+Slack Link to Slack-Scibot, will need to authenticate via Slack login to the workspace it is configured to work with: https://api.slack.com/apps/A062693KZRB
+
+  **BASE_URL** stands for https://slack-scibot.notch8.cloud hereafter.
+  Use **https://slack-scibot.notch8.cloud** for **Redirect**.
+
+3. Activate **Interactivity & Shortcuts** and add this url: `https://slack-scibot.notch8.cloud/api/slack/action`
+4. Activate **Slash Commands** adding two slash commands `/ping`, `/quiz` and use this url: `https://slack-scibot.notch8.cloud/api/slack/command`
+5. Activate **Event Subscriptions** subscribing to the event type `member_joined_channel` and add this url: `https://slack-scibot.notch8.cloud/api/slack/event`(This step needs the application to be running :D so you can skip this and come back a few mins later)
 6. Navigate to the **App Home** page and toggle **Always Show My Bot as Online** (according to your reference)
 
 #### Install dependencies and prepare `.env` file
@@ -39,7 +42,7 @@ bundle install
 cp .env.example .env
 ```
 
-Go to https://api.slack.com/apps, click on your application.  
+Go to https://api.slack.com/apps, click on your application.
 Grab the infomations for `.env` from **Basic Information** section.
 
 ## Run the app
@@ -48,7 +51,7 @@ Grab the infomations for `.env` from **Basic Information** section.
 rails s
 ```
 
-Open **BASE_URL** in your browser.
+Open **https://slack-scibot.notch8.cloud** in your browser.
 
 ## Deployment
 

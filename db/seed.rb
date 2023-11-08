@@ -11,7 +11,7 @@ Group.find_or_create_by(name: 'gcdev') do |group|
 end
 
 Member.find_or_create_by(handle: 'rob') do |member|
-  member.name = "Rob Kauufman"
+  member.name = "Rob Kaufman"
   member.group = Group.find_by(name: 'devops')
   member.member_id = "U0E347KGF"
 end

@@ -1,0 +1,86 @@
+# Default values for slack-scibot.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/scientist-softserv/slack-scibot
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets:
+  - name: github
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+
+ingress:
+  enabled: true
+  hosts:
+    - host: slack-scibot.notch8.cloud
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  annotations: {
+    kubernetes.io/ingress.class: "nginx",
+    nginx.ingress.kubernetes.io/proxy-body-size: "0",
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  }
+  tls:
+    - hosts:
+        - slack-scibot.notch8.cloud
+      secretName: slack-scibot-tls
+
+postgresql:
+  enabled: false
+
+# database configuration for an external postgresql;
+#   ignored if `postgresql.enabled` is true
+externalPostgresql:
+  host: pg-postgresql.staging-postgres.svc.cluster.local
+  password: $POSTGRES_PASSWORD
+
+env:
+  configmap:
+    RAILS_HOST_NAME: slack-scibot.notch8.cloud
+    BASE_URL: https://slack-scibot.notch8.cloud
+    DATABASE_HOST: pg-postgresql.staging-postgres.svc.cluster.local
+    DATABASE_NAME: slack-scibot-staging
+    DATABASE_PASSWORD: $POSTGRES_PASSWORD
+    DATABASE_USER: postgres
+    RAILS_ENV: production
+    RAILS_SECRET_TOKEN: $RAILS_SECRET_TOKEN
+    SLACK_CLIENT_ID: $SLACK_CLIENT_ID
+    SLACK_CLIENT_SECRET: $SLACK_CLIENT_SECRET
+    SLACK_OAUTH_SCOPE: "users:read,channels:read,groups:read,chat:write,commands,incoming-webhook"
+    SLACK_SIGNING_SECRET: $SLACK_SIGNING_SECRET
+  secret:
